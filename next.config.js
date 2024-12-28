@@ -8,7 +8,10 @@ module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   images: {
-    domains: ['github.blog'],
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'github.blog',
+    }],
     deviceSizes: [320, 640, 1080, 1200],
     imageSizes: [64, 128],
   },
