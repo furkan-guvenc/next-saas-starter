@@ -192,10 +192,35 @@ export type ImageFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type RichTextFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
+export type PostsBodyQuoteFilter = {
+  content?: InputMaybe<StringFilter>;
+  author?: InputMaybe<StringFilter>;
+  cite?: InputMaybe<StringFilter>;
+};
+
+export type PostsBodyArticleImageFilter = {
+  src?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PostsBodyCodeFilter = {
+  code?: InputMaybe<StringFilter>;
+  language?: InputMaybe<StringFilter>;
+  selectedLines?: InputMaybe<StringFilter>;
+  withCopyButton?: InputMaybe<BooleanFilter>;
+  withLineNumbers?: InputMaybe<BooleanFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type PostsBodyFilter = {
+  Quote?: InputMaybe<PostsBodyQuoteFilter>;
+  ArticleImage?: InputMaybe<PostsBodyArticleImageFilter>;
+  Code?: InputMaybe<PostsBodyCodeFilter>;
 };
 
 export type PostsFilter = {
@@ -204,7 +229,7 @@ export type PostsFilter = {
   date?: InputMaybe<StringFilter>;
   tags?: InputMaybe<StringFilter>;
   imageUrl?: InputMaybe<ImageFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<PostsBodyFilter>;
 };
 
 export type PostsConnectionEdges = {

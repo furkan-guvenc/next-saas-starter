@@ -113,10 +113,35 @@ input ImageFilter {
   in: [String]
 }
 
-input RichTextFilter {
-  startsWith: String
-  eq: String
+input PostsBodyQuoteFilter {
+  content: StringFilter
+  author: StringFilter
+  cite: StringFilter
+}
+
+input PostsBodyArticleImageFilter {
+  src: StringFilter
+  caption: StringFilter
+}
+
+input BooleanFilter {
+  eq: Boolean
   exists: Boolean
+}
+
+input PostsBodyCodeFilter {
+  code: StringFilter
+  language: StringFilter
+  selectedLines: StringFilter
+  withCopyButton: BooleanFilter
+  withLineNumbers: BooleanFilter
+  caption: StringFilter
+}
+
+input PostsBodyFilter {
+  Quote: PostsBodyQuoteFilter
+  ArticleImage: PostsBodyArticleImageFilter
+  Code: PostsBodyCodeFilter
 }
 
 input PostsFilter {
@@ -125,7 +150,7 @@ input PostsFilter {
   date: StringFilter
   tags: StringFilter
   imageUrl: ImageFilter
-  body: RichTextFilter
+  body: PostsBodyFilter
 }
 
 type PostsConnectionEdges {
