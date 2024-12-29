@@ -49,7 +49,7 @@ const DetailsContainer = styled.div`
 const MidDot = styled.span`
   &::before {
     display: inline-block;
-    content: '\x000B7';
+    content: '·';
     margin: 0 0.6rem;
   }
 `;
