@@ -4,7 +4,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = withBundleAnalyzer({
+/** @type {import('next').NextConfig} */
+const config = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   images: {
@@ -30,4 +31,6 @@ module.exports = withBundleAnalyzer({
 
     return config;
   },
-});
+};
+
+module.exports = withBundleAnalyzer(config);
