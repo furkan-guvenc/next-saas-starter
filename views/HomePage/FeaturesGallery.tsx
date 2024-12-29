@@ -134,7 +134,7 @@ const TabsContainer = styled.div`
   }
 `;
 
-const ImageContainer = styled.div<{ isActive: boolean }>`
+const ImageContainer = styled('div').withConfig({shouldForwardProp: (prop) => !['isActive'].includes(prop)})<{ isActive: boolean }>`
   position: relative;
   overflow: hidden;
   border-radius: 0.8rem;
@@ -161,7 +161,7 @@ const ImageContainer = styled.div<{ isActive: boolean }>`
   }
 `;
 
-const Tab = styled.div<{ isActive: boolean }>`
+const Tab = styled('div').withConfig({shouldForwardProp: (prop) => !['isActive'].includes(prop)})<{ isActive: boolean }>`
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem;

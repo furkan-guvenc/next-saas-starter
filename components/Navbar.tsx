@@ -161,7 +161,7 @@ const NavItemWrapper = styled.li<Partial<SingleNavItem>>`
   }
 `;
 
-const NavbarContainer = styled.div<NavbarContainerProps>`
+const NavbarContainer = styled('div').withConfig({shouldForwardProp: (prop) => !['hidden', 'transparent'].includes(prop)})<NavbarContainerProps>`
   display: flex;
   position: sticky;
   top: 0;
