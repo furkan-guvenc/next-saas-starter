@@ -8,7 +8,6 @@ export default function useEscClose({ onClose }: UseEscCloseProps) {
   const handleUserKeyPress = useCallback(
     (event: KeyboardEvent) => {
       const { code } = event;
-      debugger;
       if (code === "Escape") {
         onClose();
       }
