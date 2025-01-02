@@ -7,44 +7,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from 'components/Container';
 import Separator from 'components/Separator';
 import { media } from 'utils/media';
+import { Testimonial } from 'content_types';
 
-const TESTIMONIALS = [
-  {
-    companyLogoUrl: '/testimonials/company-logo-1.svg',
-    content: `Really good. I am so pleased with this product. I didn't even need training.`,
-    author: {
-      name: 'Clyde Edwards',
-      title: 'Very Serious Man',
-      avatarUrl: '/testimonials/author-photo-1.jpeg',
-    },
-  },
-  {
-    companyLogoUrl: '/testimonials/company-logo-2.svg',
-    content: `It's really wonderful. I use saas product often. Thank You! Saas product has really helped our business.`,
-    author: {
-      name: 'Jimmy Hunter',
-      title: 'Sigma Male University Graduate',
-      avatarUrl: '/testimonials/author-photo-2.jpeg',
-    },
-  },
-  {
-    companyLogoUrl: '/testimonials/company-logo-3.svg',
-    content: `Since I invested in saas product I made over 100,000 dollars profits. It really saves me time and effort. saas product is exactly what our business has been lacking.`,
-    author: {
-      name: 'Marjorie Morgan',
-      title: 'Chief Chad Officer',
-      avatarUrl: '/testimonials/author-photo-3.jpeg',
-    },
-  },
-];
+interface TestimonialsProps {
+  testimonials: Testimonial[];
+}
 
-export default function Testimonials() {
+export default function Testimonials({ testimonials }: TestimonialsProps) {
   return (
     <div>
       <Separator />
       <TestimonialsWrapper>
-        <Swiper modules={[Navigation, Autoplay, A11y]} slidesPerView={1} autoplay={{ delay: 8000 }} centeredSlides navigation loop>
-          {TESTIMONIALS.map((singleTestimonial, idx) => (
+        <Swiper modules={[Navigation, Autoplay, A11y]} slidesPerView={1} autoplay={{ delay: 8000 }} centeredSlides
+                navigation loop>
+          {testimonials.map((singleTestimonial, idx) => (
             <SwiperSlide key={idx}>
               <TestimonialCard>
                 <NextImage
@@ -53,7 +29,7 @@ export default function Testimonials() {
                   width={200}
                   height={40}
                   style={{
-                    maxWidth: "100%",
+                    maxWidth: '100%',
                     // height: "auto"
                   }} />
                 <Content>“{singleTestimonial.content}”</Content>
@@ -65,7 +41,7 @@ export default function Testimonials() {
                       width={48}
                       height={48}
                       style={{
-                        maxWidth: "100%",
+                        maxWidth: '100%',
                         // height: "auto"
                       }} />
                   </AuthorImageContainer>

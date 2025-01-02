@@ -7,17 +7,21 @@ import Container from 'components/Container';
 import OverTitle from 'components/OverTitle';
 import SectionTitle from 'components/SectionTitle';
 import { media } from 'utils/media';
+import { HomePageCta } from '../../content_types';
 
-export default function Cta() {
+interface CtaProps {
+  cta: HomePageCta;
+}
+
+export default function Cta({ cta }: CtaProps) {
   return (
     <CtaWrapper>
       <Container>
         <Stack>
-          <OverTitle>Lorem ipsum dolor sit amet</OverTitle>
-          <SectionTitle>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus delectus?</SectionTitle>
+          <OverTitle>{cta.overTitle}</OverTitle>
+          <SectionTitle>{cta.title}</SectionTitle>
           <Description>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda beatae accusamus deleniti nihil quas tempora numquam, vitae
-            culpa.
+            {cta.description}
           </Description>
           <ButtonGroup>
             <NextLink href="#early-access" passHref>

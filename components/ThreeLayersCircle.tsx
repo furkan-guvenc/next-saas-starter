@@ -13,7 +13,7 @@ const ThreeLayersCircle = styled('div').withConfig({shouldForwardProp: (prop) =>
   width: 5rem;
   height: 5rem;
   border-radius: 100rem;
-  background: rgb(${(p) => p.baseColor});
+  background: ${(p) => p.baseColor};
   z-index: 0;
   transition: background 0.2s;
 
@@ -38,14 +38,14 @@ const ThreeLayersCircle = styled('div').withConfig({shouldForwardProp: (prop) =>
   &:after {
     width: 4rem;
     height: 4rem;
-    background: rgb(${(p) => p.secondColor});
+    background: ${(p) => p.secondColor};
     z-index: -2;
   }
 
   &:before {
     width: 2rem;
     height: 2rem;
-    background: rgb(${(p) => p.baseColor});
+    background: ${(p) => p.baseColor};
   }
 `;
 

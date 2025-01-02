@@ -1,25 +1,24 @@
 import NextImage from 'next/image';
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { media } from 'utils/media';
 import Container from './Container';
 import OverTitle from './OverTitle';
 import RichText from './RichText';
+import { Section } from '../content_types';
+import { TinaMarkdown } from 'tinacms/dist/rich-text';
 
 export interface BasicSectionProps {
-  imageUrl: string;
-  title: string;
-  overTitle: string;
-  reversed?: boolean;
+  section: Section;
 }
 
-export default function BasicSection({ imageUrl, title, overTitle, reversed, children }: PropsWithChildren<BasicSectionProps>) {
+export default function BasicSection({ section }: BasicSectionProps) {
   return (
-    <BasicSectionWrapper reversed={reversed}>
+    <BasicSectionWrapper reversed={section.reversed}>
       <ImageContainer>
         <NextImage
-          src={imageUrl}
-          alt={title}
+          src={section.imageUrl}
+          alt={section.title}
           fill
           sizes="100vw"
           style={{
@@ -27,9 +26,11 @@ export default function BasicSection({ imageUrl, title, overTitle, reversed, chi
           }} />
       </ImageContainer>
       <ContentContainer>
-        <CustomOverTitle>{overTitle}</CustomOverTitle>
-        <Title>{title}</Title>
-        <RichText>{children}</RichText>
+        <CustomOverTitle>{section.overTitle}</CustomOverTitle>
+        <Title>{section.title}</Title>
+        <RichText>
+          <TinaMarkdown content={section.content} />
+        </RichText>
       </ContentContainer>
     </BasicSectionWrapper>
   );
@@ -80,7 +81,7 @@ const ContentContainer = styled.div`
   flex: 1;
 `;
 
-type Props = Pick<BasicSectionProps, 'reversed'>;
+type Props = Pick<Section, 'reversed'>;
 const BasicSectionWrapper = styled(Container)<Props>`
   display: flex;
   align-items: center;

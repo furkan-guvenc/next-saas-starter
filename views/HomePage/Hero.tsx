@@ -7,18 +7,23 @@ import HeroIllustration from 'components/HeroIllustation';
 import OverTitle from 'components/OverTitle';
 import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
 import { media } from 'utils/media';
+import React from 'react';
+import { HomePageHero } from '../../content_types';
 
-export default function Hero() {
+interface HeroProps {
+  hero: HomePageHero;
+}
+
+export default function Hero({ hero }: HeroProps) {
   const { setIsModalOpened } = useNewsletterModalContext();
 
   return (
     <HeroWrapper>
       <Contents>
-        <CustomOverTitle>the coolest, saas product you have ever seen</CustomOverTitle>
-        <Heading>Make your life easier with our SaaS</Heading>
+        <CustomOverTitle>{hero.overTitle}</CustomOverTitle>
+        <Heading>{hero.title}</Heading>
         <Description>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, tempora qui. Explicabo voluptate iure ipsum molestias
-          repudiandae perspiciatis nostrum praesentium, unde pariatur tempora magni rem. Necessitatibus facilis obcaecati ratione.
+          {hero.description}
         </Description>
         <CustomButtonGroup>
           <Button onClick={() => setIsModalOpened(true)}>

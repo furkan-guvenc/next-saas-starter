@@ -4,6 +4,13 @@ const branch =
   process.env.NEXT_PUBLIC_EDIT_BRANCH ||
   'master';
 
+function svgValidator(url: string): string | undefined {
+  if (url && !url.endsWith(".svg")) {
+    return "Should be an svg file"
+  }
+}
+
+
 export default defineConfig({
   branch,
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
@@ -20,6 +27,244 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        label: 'Home Page Hero',
+        name: 'hero',
+        path: 'content/homepage',
+        format: 'json',
+        match: {
+          include: "hero"
+        },
+        fields: [
+          {
+            type: 'string',
+            label: 'Over Title',
+            name: 'overTitle',
+          },
+          {
+            type: 'string',
+            label: 'Title',
+            name: 'title',
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: 'string',
+            label: 'Description',
+            name: 'description',
+            isBody: true,
+          },
+        ],
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+      },
+      {
+        label: 'Home Page CTA',
+        name: 'cta',
+        path: 'content/homepage',
+        format: 'json',
+        match: {
+          include: "cta"
+        },
+        fields: [
+          {
+            type: 'string',
+            label: 'Over Title',
+            name: 'overTitle',
+          },
+          {
+            type: 'string',
+            label: 'Title',
+            name: 'title',
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: 'string',
+            label: 'Description',
+            name: 'description',
+            isBody: true,
+          },
+        ],
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+      },
+      {
+        label: 'Partners',
+        name: 'partners',
+        path: 'content/partners',
+        format: 'json',
+        fields: [
+          {
+            type: 'image',
+            label: 'Logo URL',
+            name: 'logoUrl',
+            ui: {
+              validate: svgValidator
+            }
+          },
+        ]
+      },
+      {
+        label: 'Sections',
+        name: 'sections',
+        path: 'content/sections',
+        format: 'json',
+        fields: [
+          {
+            type: 'string',
+            label: 'Over Title',
+            name: 'overTitle',
+          },
+          {
+            type: 'string',
+            label: 'Title',
+            name: 'title',
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: 'rich-text',
+            label: 'Content',
+            name: 'content',
+            isBody: true,
+          },
+          {
+            type: 'image',
+            label: 'Image URL',
+            name: 'imageUrl',
+          },
+          {
+            type: 'boolean',
+            label: 'Reversed',
+            name: 'reversed',
+          },
+        ]
+      },
+      {
+        label: 'Features Gallery',
+        name: 'featuresGallery',
+        path: 'content/featureGallery',
+        format: 'json',
+        fields: [
+          {
+            type: 'string',
+            label: 'Title',
+            name: 'title',
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: 'string',
+            label: 'Description',
+            name: 'description',
+            isBody: true,
+          },
+          {
+            type: 'image',
+            label: 'Image URL',
+            name: 'imageUrl',
+          },
+          {
+            type: 'string',
+            label: 'Base Color',
+            name: 'baseColor',
+            ui: {
+              component: 'color',
+              colorFormat: "rgb"
+            }
+          },
+          {
+            type: 'string',
+            label: 'Second Color',
+            name: 'secondColor',
+            ui: {
+              component: 'color',
+              colorFormat: "rgb"
+            }
+          },
+        ]
+      },
+      {
+        label: 'Features',
+        name: 'features',
+        path: 'content/features',
+        format: 'json',
+        fields: [
+          {
+            type: 'string',
+            label: 'Title',
+            name: 'title',
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: 'string',
+            label: 'Description',
+            name: 'description',
+            isBody: true,
+          },
+          {
+            type: 'image',
+            label: 'Image URL',
+            name: 'imageUrl',
+          },
+        ]
+      },
+      {
+        label: 'Testimonials',
+        name: 'testimonials',
+        path: 'content/testimonials',
+        format: 'json',
+        fields: [
+          {
+            type: 'object',
+            label: 'author',
+            name: 'author',
+            fields: [
+              {
+                type: 'string',
+                label: 'Name',
+                name: 'name',
+                isTitle: true,
+                required: true,
+              },
+              {
+                type: 'string',
+                label: 'Title',
+                name: 'title',
+              },
+              {
+                type: 'image',
+                label: 'Avatar URL',
+                name: 'avatarUrl',
+              },
+            ]
+          },
+          {
+            type: 'string',
+            label: 'Content',
+            name: 'content',
+            isBody: true,
+          },
+          {
+            type: 'image',
+            label: 'Company Logo URL',
+            name: 'companyLogoUrl',
+            ui: {
+              validate: svgValidator
+            }
+          },
+        ]
+      },
+      {
         label: 'Blog Posts',
         name: 'posts',
         path: 'content/posts',
@@ -29,6 +274,8 @@ export default defineConfig({
             type: 'string',
             label: 'Title',
             name: 'title',
+            isTitle: true,
+            required: true,
           },
           {
             type: 'string',
@@ -129,30 +376,6 @@ export default defineConfig({
                   },
                 ],
               },
-              // {
-              //   name: 'h2',
-              //   label: 'H2',
-              //   inline: true,
-              //   fields: [],
-              // },
-              // {
-              //   name: 'h3',
-              //   label: 'H3',
-              //   inline: true,
-              //   fields: [],
-              // },
-              // {
-              //   name: 'br',
-              //   label: 'BR',
-              //   inline: true,
-              //   fields: [],
-              // },
-              // {
-              //   name: 'p',
-              //   label: 'P',
-              //   inline: true,
-              //   fields: [],
-              // },
             ]
           }
         ],
