@@ -11,6 +11,9 @@ import NewsletterModal from '../components/NewsletterModal';
 import { ColorModeScript } from 'nextjs-color-mode';
 import { GlobalStyle } from '../components/GlobalStyles';
 
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
+
 const navItems: NavItems = [
   { title: 'Awesome SaaS Features', href: '/features' },
   { title: 'Pricing', href: '/pricing' },
