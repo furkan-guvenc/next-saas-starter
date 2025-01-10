@@ -35,7 +35,7 @@ export default function PricingCard({ title, description, benefits, isOutlined, 
   );
 }
 
-const Wrapper = styled.div<{ isOutlined?: boolean }>`
+const Wrapper = styled.div.withConfig({shouldForwardProp: (prop) => !['isOutlined'].includes(prop)})<{ isOutlined?: boolean }>`
   display: flex;
   flex-direction: column;
   padding: 3rem;

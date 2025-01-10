@@ -1,21 +1,16 @@
 import styled from 'styled-components';
-import Page from 'components/Page';
+import Layout from 'components/Layout';
 import FaqSection from 'views/PricingPage/FaqSection';
 import PricingTablesSection from 'views/PricingPage/PricingTablesSection';
+import { Wrapper } from './components';
 
 export default function PricingPage() {
   return (
-    <Page title="Pricing" description="Cupidatat et reprehenderit ullamco aute ullamco anim tempor.">
+    <Layout title="Pricing" description="Cupidatat et reprehenderit ullamco aute ullamco anim tempor.">
       <Wrapper>
         <PricingTablesSection />
         <FaqSection />
       </Wrapper>
-    </Page>
+    </Layout>
   );
 }
-
-const Wrapper = styled.div`
-  & > :last-child {
-    margin-bottom: 15rem;
-  }
-`;

@@ -1,3 +1,4 @@
+'use client'
 import styled from 'styled-components';
 import Accordion from 'components/Accordion';
 import SectionTitle from 'components/SectionTitle';

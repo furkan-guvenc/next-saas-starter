@@ -1,3 +1,4 @@
+'use client'
 import NextImage from 'next/image';
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -114,7 +115,7 @@ const TabsContainer = styled.div`
     }
 `;
 
-const ImageContainer = styled('div').withConfig({ shouldForwardProp: (prop) => !['isActive'].includes(prop) })<{
+const ImageContainer = styled.div.withConfig({ shouldForwardProp: (prop) => !['isActive'].includes(prop) })<{
   isActive: boolean
 }>`
     position: relative;
@@ -143,7 +144,7 @@ const ImageContainer = styled('div').withConfig({ shouldForwardProp: (prop) => !
     }
 `;
 
-const Tab = styled('div').withConfig({ shouldForwardProp: (prop) => !['isActive'].includes(prop) })<{
+const Tab = styled.div.withConfig({ shouldForwardProp: (prop) => !['isActive'].includes(prop) })<{
   isActive: boolean
 }>`
     display: flex;

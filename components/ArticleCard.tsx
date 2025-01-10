@@ -1,3 +1,4 @@
+'use client'
 import NextImage from 'next/image';
 import NextLink from 'next/link';
 import styled from 'styled-components';
@@ -12,7 +13,7 @@ export interface ArticleCardProps {
 
 export default function ArticleCard({ title, slug, imageUrl, description }: ArticleCardProps) {
   return (
-    <NextLink href={'/blog/' + slug} passHref>
+    <NextLink href={'/app/blog/' + slug} passHref>
       <ArticleCardWrapper className="article-card-wrapper">
         <HoverEffectContainer>
           <ImageContainer>

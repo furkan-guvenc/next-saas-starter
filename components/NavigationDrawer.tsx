@@ -1,5 +1,6 @@
+'use client'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { PropsWithChildren, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { NavItems } from 'types'
@@ -30,17 +31,17 @@ export default function NavigationDrawer({ children, items }: NavigationDrawerPr
 }
 
 function NavItemsList({ items }: NavigationDrawerProps) {
-  const { close } = OriginalDrawer.useDrawer()
-  const router = useRouter()
+  // const { close } = OriginalDrawer.useDrawer()
+  // const router = useRouter()
 
-  useEffect(() => {
-    function handleRouteChangeComplete() {
-      close()
-    }
-
-    router.events.on('routeChangeComplete', handleRouteChangeComplete)
-    return () => router.events.off('routeChangeComplete', handleRouteChangeComplete)
-  }, [close, router])
+  // useEffect(() => {
+  //   function handleRouteChangeComplete() {
+  //     close()
+  //   }
+  //
+  //   router.events.on('routeChangeComplete', handleRouteChangeComplete)
+  //   return () => router.events.off('routeChangeComplete', handleRouteChangeComplete)
+  // }, [close, router])
 
   return (
     <ul>

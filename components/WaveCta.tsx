@@ -1,3 +1,4 @@
+'use client'
 import NextLink from 'next/link';
 import styled from 'styled-components';
 import Button from 'components/Button';

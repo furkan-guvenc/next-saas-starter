@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'fs/promises';
 
-export async function readContent<T>(basePath: string, ...paths: string[]): Promise<T[]> {
-  const dirPath = path.join(basePath, 'content', ...paths);
+export async function readContent<T>(basePath: string, paths: string): Promise<T[]> {
+  const dirPath = path.join(basePath, 'content', paths);
   return fs
     .readdir(dirPath)
     .then(files => Promise.all(files
@@ -12,8 +12,8 @@ export async function readContent<T>(basePath: string, ...paths: string[]): Prom
     );
 }
 
-export async function readSingleContent<T>(basePath: string, ...paths: string[]): Promise<T> {
-  const filePath = path.join(basePath, 'content', ...paths);
+export async function readSingleContent<T>(basePath: string, paths: string): Promise<T> {
+  const filePath = path.join(basePath, 'content', paths);
   const content = await fs.readFile(filePath, 'utf8');
   return JSON.parse(content) as T;
 }

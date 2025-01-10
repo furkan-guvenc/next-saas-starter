@@ -1,6 +1,7 @@
+'use client'
 import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
@@ -20,18 +21,17 @@ type ScrollingDirections = 'up' | 'down' | 'none';
 type NavbarContainerProps = { hidden: boolean; transparent: boolean };
 
 export default function Navbar({ items }: NavbarProps) {
-  const router = useRouter();
+  const routerPath = usePathname();
   const { toggle } = Drawer.useDrawer();
   const [scrollingDirection, setScrollingDirection] = useState<ScrollingDirections>('none');
 
   let lastScrollY = useRef(0);
-  const lastRoute = useRef('');
+  const lastRoute = useRef<null | string>(null);
   const stepSize = useRef(50);
 
-  useScrollPosition(scrollPositionCallback, [router.asPath], undefined, undefined, 50);
+  useScrollPosition(scrollPositionCallback, [routerPath], undefined, undefined, 50);
 
   function scrollPositionCallback({ currPos }: ScrollPositionEffectProps) {
-    const routerPath = router.asPath;
     const hasRouteChanged = routerPath !== lastRoute.current;
 
     if (hasRouteChanged) {
@@ -161,7 +161,7 @@ const NavItemWrapper = styled.li<Partial<SingleNavItem>>`
   }
 `;
 
-const NavbarContainer = styled('div').withConfig({shouldForwardProp: (prop) => !['hidden', 'transparent'].includes(prop)})<NavbarContainerProps>`
+const NavbarContainer = styled.div.withConfig({shouldForwardProp: (prop) => !['hidden', 'transparent'].includes(prop)})<NavbarContainerProps>`
   display: flex;
   position: sticky;
   top: 0;

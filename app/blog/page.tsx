@@ -1,14 +1,18 @@
-import { InferGetStaticPropsType } from 'next';
-import styled from 'styled-components';
+import { type Metadata } from 'next';
 import ArticleCard from 'components/ArticleCard';
-import AutofitGrid from 'components/AutofitGrid';
-import Page from 'components/Page';
-import { media } from 'utils/media';
+import Layout from 'components/Layout';
 import { getAllPosts } from 'utils/postsFetcher';
+import { CustomAutofitGrid } from './components';
 
-export default function BlogIndexPage({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export const metadata: Metadata = {
+  title: "My SaaS Startup Blog",
+  description: "Culpa duis reprehenderit in ex amet cillum nulla do in enim commodo. Sunt ut excepteur et est aliqua anim ea excepteur fugiat voluptate. Fugiat exercitation dolore laboris do quis consectetur eiusmod tempor consequat."
+}
+
+export default async function BlogIndexPage() {
+  const posts = await getAllPosts();
   return (
-    <Page
+    <Layout
       title="My SaaS Startup Blog"
       description="Culpa duis reprehenderit in ex amet cillum nulla do in enim commodo. Sunt ut excepteur et est aliqua anim ea excepteur fugiat voluptate. Fugiat exercitation dolore laboris do quis consectetur eiusmod tempor consequat."
     >
@@ -23,30 +27,6 @@ export default function BlogIndexPage({ posts }: InferGetStaticPropsType<typeof 
           />
         ))}
       </CustomAutofitGrid>
-    </Page>
+    </Layout>
   );
-}
-
-const CustomAutofitGrid = styled(AutofitGrid)`
-  --autofit-grid-item-size: 40rem;
-
-  ${media('<=tablet')} {
-    --autofit-grid-item-size: 30rem;
-  }
-
-  ${media('<=phone')} {
-    --autofit-grid-item-size: 100%;
-  }
-
-  .article-card-wrapper {
-    max-width: 100%;
-  }
-`;
-
-export async function getStaticProps() {
-  return {
-    props: {
-      posts: await getAllPosts(),
-    },
-  };
 }

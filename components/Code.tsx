@@ -90,7 +90,7 @@ const Caption = styled.small`
   font-size: 1.2rem;
 `;
 
-const CopyButton = styled('button').withConfig({shouldForwardProp: (prop) => !['copied'].includes(prop)})<{ copied: boolean }>`
+const CopyButton = styled.button.withConfig({shouldForwardProp: (prop) => !['copied'].includes(prop)})<{ copied: boolean }>`
   position: absolute;
   border: none;
   top: 2.4rem;
@@ -127,7 +127,7 @@ const CopyButton = styled('button').withConfig({shouldForwardProp: (prop) => !['
   }
 `;
 
-const CodeWrapper = styled('div').withConfig({shouldForwardProp: (prop) => !['language'].includes(prop)})<{ language: string }>`
+const CodeWrapper = styled.div.withConfig({shouldForwardProp: (prop) => !['language'].includes(prop)})<{ language: string }>`
   position: relative;
   border-radius: 0.3em;
   margin-top: 4.5rem;

@@ -1,6 +1,6 @@
-const CopyPlugin = require('copy-webpack-plugin');
+import bundleAnalyzer from '@next/bundle-analyzer';
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
@@ -16,9 +16,18 @@ const config = {
     deviceSizes: [320, 640, 1080, 1200],
     imageSizes: [64, 128],
   },
-  swcMinify: true,
   compiler: {
     styledComponents: true,
+  },
+  experimental: {
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['url-loader'],
+          as: '*.js',
+        },
+      },
+    },
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.module.rules.push({
@@ -33,4 +42,4 @@ const config = {
   },
 };
 
-module.exports = withBundleAnalyzer(config);
+export default withBundleAnalyzer(config);

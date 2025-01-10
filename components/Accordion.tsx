@@ -53,7 +53,7 @@ const TitleWrapper = styled.div`
   align-items: center;
 `;
 
-const Icon = styled.div<{ isActive: boolean }>`
+const Icon = styled.div.withConfig({ shouldForwardProp: (prop) => !['isActive'].includes(prop) })<{ isActive: boolean }>`
   width: 2.4rem;
   transition: transform 0.3s;
   transform: rotateZ(${(p) => (p.isActive ? 180 : 0)}deg);

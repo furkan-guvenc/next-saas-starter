@@ -1,3 +1,4 @@
+'use client'
 import styled from 'styled-components';
 import { Components, TinaMarkdown, TinaMarkdownContent } from 'tinacms/dist/rich-text';
 import { media } from 'utils/media';

@@ -1,7 +1,6 @@
-import Head from 'next/head';
+'use client'
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import { EnvVars } from 'env';
 import { media } from 'utils/media';
 import Container from './Container';
 import SectionTitle from './SectionTitle';
@@ -11,16 +10,9 @@ export interface PageProps {
   description?: string;
 }
 
-export default function Page({ title, description, children }: PropsWithChildren<PageProps>) {
-  const title2 = title || EnvVars.SITE_NAME;
+export default function Layout({ title, description, children }: PropsWithChildren<PageProps>) {
   return (
     <>
-      <Head>
-        <title>
-          {title2}
-        </title>
-        <meta name="description" content={description} />
-      </Head>
       <Wrapper>
         <HeaderContainer>
           <Container>

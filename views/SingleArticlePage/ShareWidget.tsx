@@ -1,3 +1,4 @@
+'use client'
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton } from 'react-share';
 import styled from 'styled-components';
 import { EnvVars } from 'env';

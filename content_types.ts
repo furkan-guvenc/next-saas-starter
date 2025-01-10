@@ -28,14 +28,6 @@ export type FeatureGalleryItem = {
   secondColor: string;
 }
 
-export type Section = {
-  overTitle: string;
-  title: string;
-  content: TinaMarkdownContent;
-  imageUrl: string;
-  reversed: boolean;
-}
-
 export type HomePageHero = {
   overTitle: string;
   title: string;
@@ -46,4 +38,13 @@ export type HomePageCta = {
   overTitle: string;
   title: string;
   description: string;
+}
+
+export type SingleFooterListItem = { title: string; href: string };
+export type FooterListItems = SingleFooterListItem[];
+export type SingleFooterList = { title: string; items: FooterListItems };
+export type FooterItems = SingleFooterList[];
+export type Footer = {
+  waveCtaTitle: string;
+  footerItems: FooterItems
 }

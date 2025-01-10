@@ -1,3 +1,4 @@
+'use client'
 import NextLink from 'next/link';
 import styled from 'styled-components';
 import Button from 'components/Button';
@@ -29,7 +30,7 @@ export default function Hero({ hero }: HeroProps) {
           <Button onClick={() => setIsModalOpened(true)}>
             Subscribe to the newsletter <span>&rarr;</span>
           </Button>
-          <NextLink href="#whitepaper" passHref>
+          <NextLink href="/features" passHref>
             <Button transparent>
               Features <span>&rarr;</span>
             </Button>

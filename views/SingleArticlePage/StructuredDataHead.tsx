@@ -1,3 +1,4 @@
+'use client'
 import Head from 'next/head';
 import { jsonLdScriptProps } from 'react-schemaorg';
 import { TechArticle, WebSite } from 'schema-dts';

@@ -1,5 +1,63 @@
 import { defineConfig } from 'tinacms';
 
+const footerCollection = {
+    label: 'Footer',
+    name: 'footer',
+    path: 'content/global',
+    format: 'json',
+    match: {
+      include: 'footer'
+    },
+    fields: [
+      {
+        type: 'string',
+        label: 'Wave CTA Title',
+        name: 'waveCtaTitle',
+      },
+      {
+        type: 'object',
+        label: 'Footer Items',
+        name: 'footerItems',
+        list: true,
+        fields: [
+          {
+            type: 'string',
+            label: 'Title',
+            name: 'title',
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: 'object',
+            label: 'Items',
+            name: 'items',
+            list: true,
+            fields: [
+              {
+                type: 'string',
+                label: 'Title',
+                name: 'title',
+                isTitle: true,
+                required: true,
+              },
+              {
+                type: 'string',
+                label: 'Link',
+                name: 'href',
+              },
+            ]
+          },
+        ]
+      },
+    ],
+    ui: {
+      allowedActions: {
+        create: false,
+        delete: false,
+      },
+    },
+  }
+
 const branch =
   process.env.NEXT_PUBLIC_EDIT_BRANCH ||
   'master';
@@ -26,6 +84,7 @@ export default defineConfig({
   },
   schema: {
     collections: [
+      footerCollection,
       {
         label: 'Home Page Hero',
         name: 'hero',
@@ -114,7 +173,7 @@ export default defineConfig({
       },
       {
         label: 'Sections',
-        name: 'sections',
+        name: 'section',
         path: 'content/sections',
         format: 'json',
         fields: [
@@ -122,6 +181,7 @@ export default defineConfig({
             type: 'string',
             label: 'Over Title',
             name: 'overTitle',
+            required: true
           },
           {
             type: 'string',
@@ -135,16 +195,19 @@ export default defineConfig({
             label: 'Content',
             name: 'content',
             isBody: true,
+            required: true
           },
           {
             type: 'image',
             label: 'Image URL',
             name: 'imageUrl',
+            required: true
           },
           {
             type: 'boolean',
             label: 'Reversed',
             name: 'reversed',
+            required: true
           },
         ]
       },
