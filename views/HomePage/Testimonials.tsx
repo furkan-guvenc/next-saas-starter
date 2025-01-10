@@ -3,7 +3,7 @@ import NextImage from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
-import { A11y, Autoplay, Navigation } from 'swiper';
+import { A11y, Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from 'components/Container';
 import Separator from 'components/Separator';
