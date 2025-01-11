@@ -66,5 +66,5 @@ function Modals() {
   if (!isModalOpened) {
     return null;
   }
-  return <NewsletterModal onClose={() => {}} />;
+  return <NewsletterModal onClose={() => setIsModalOpened(false)} />;
 }
