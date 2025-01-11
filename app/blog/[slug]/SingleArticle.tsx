@@ -12,7 +12,7 @@ import MDXRichText from 'components/MDXRichText';
 import React, { useEffect, useRef, useState } from 'react';
 import { getReadTime } from 'utils/readTime';
 import { NonNullableChildrenDeep } from 'types';
-import { Posts } from '.tina/__generated__/types';
+import { Posts } from 'content_types';
 import { formatDate } from 'utils/formatDate';
 
 

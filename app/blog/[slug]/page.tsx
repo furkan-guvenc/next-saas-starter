@@ -6,9 +6,9 @@ type DynamicSegment = {
   slug: string;
 }
 
-export default async function SingleArticlePage(props: Promise<DynamicSegment>) {
+export default async function SingleArticlePage({ params }: { params: Promise<DynamicSegment> }) {
 
-  const { slug } = await props;
+  const slug = (await params).slug;
 
   const { data } = await client.queries.posts({ relativePath: `${slug}.mdx` })
 

@@ -15,7 +15,7 @@ import type { Metadata } from 'next';
 import { HomepageWrapper, WhiteBackgroundContainer, DarkerBackgroundContainer } from './page_components';
 import fs from 'fs/promises';
 import { client } from '.tina/__generated__/client'
-import { Section } from '.tina/__generated__/types'
+import { Section } from 'content_types'
 
 export const metadata: Metadata = {
   title: EnvVars.SITE_NAME,
@@ -56,7 +56,7 @@ export default async function Homepage() {
 }
 
 
-export function fetchSections(basePath: string): Promise<Section[]> {
+function fetchSections(basePath: string): Promise<Section[]> {
   const sectionsPath = path.join(basePath, 'content', 'sections');
   return fs
     .readdir(sectionsPath)

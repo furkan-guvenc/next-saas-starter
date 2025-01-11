@@ -1,4 +1,4 @@
-import { TinaMarkdownContent } from 'tinacms/dist/rich-text';
+import { SectionQuery, PostsQuery } from '.tina/__generated__/types'
 
 export type Partner = {
   logoUrl: string;
@@ -39,6 +39,9 @@ export type HomePageCta = {
   title: string;
   description: string;
 }
+
+export type Section = SectionQuery['section'];
+export type Posts = PostsQuery['posts'];
 
 export type SingleFooterListItem = { title: string; href: string };
 export type FooterListItems = SingleFooterListItem[];

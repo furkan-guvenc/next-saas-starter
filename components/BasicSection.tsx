@@ -6,7 +6,7 @@ import { media } from 'utils/media';
 import Container from './Container';
 import OverTitle from './OverTitle';
 import RichText from './RichText';
-import { Section } from '.tina/__generated__/types'
+import { Section } from 'content_types'
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 
 export interface BasicSectionProps {
