@@ -1,6 +1,6 @@
 'use client'
 import NextLink from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation';
 import { PropsWithChildren, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { NavItems } from 'types'
@@ -31,17 +31,12 @@ export default function NavigationDrawer({ children, items }: NavigationDrawerPr
 }
 
 function NavItemsList({ items }: NavigationDrawerProps) {
-  // const { close } = OriginalDrawer.useDrawer()
-  // const router = useRouter()
+  const { close } = OriginalDrawer.useDrawer()
+  const pathname = usePathname()
 
-  // useEffect(() => {
-  //   function handleRouteChangeComplete() {
-  //     close()
-  //   }
-  //
-  //   router.events.on('routeChangeComplete', handleRouteChangeComplete)
-  //   return () => router.events.off('routeChangeComplete', handleRouteChangeComplete)
-  // }, [close, router])
+  useEffect(() => {
+    close()
+  }, [pathname])
 
   return (
     <ul>
@@ -57,7 +52,7 @@ function NavItemsList({ items }: NavigationDrawerProps) {
 }
 
 function DrawerCloseButton() {
-  const ref = useRef(null)
+  const ref = useRef<HTMLButtonElement>(null)
   const a11yProps = OriginalDrawer.useA11yCloseButton(ref)
 
   return <CloseIcon className="close-icon" _ref={ref} {...a11yProps} />
