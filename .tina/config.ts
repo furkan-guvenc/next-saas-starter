@@ -63,6 +63,9 @@ const footerCollection = {
   }
 
 const branch =
+  process.env.NEXT_PUBLIC_TINA_BRANCH ||
+  process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
+  process.env.HEAD ||
   process.env.NEXT_PUBLIC_EDIT_BRANCH ||
   'master';
 
@@ -75,6 +78,7 @@ function svgValidator(url: string): string | undefined {
 
 export default defineConfig({
   branch,
+  token: process.env.TINA_TOKEN,
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   build: {
     outputFolder: 'admin',
