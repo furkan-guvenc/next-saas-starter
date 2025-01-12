@@ -8,11 +8,11 @@ import Container from 'components/Container';
 import OverTitle from 'components/OverTitle';
 import SectionTitle from 'components/SectionTitle';
 import { useResizeObserver } from 'hooks/useResizeObserver';
-import { SingleArticle } from 'types';
+import { Post } from 'content_types';
 import { media } from 'utils/media';
 
 interface ScrollableBlogPostsProps {
-  posts: SingleArticle[];
+  posts: Post[];
 }
 
 export default function ScrollableBlogPosts({ posts }: ScrollableBlogPostsProps) {
@@ -38,13 +38,13 @@ export default function ScrollableBlogPosts({ posts }: ScrollableBlogPostsProps)
       <SwiperContainer ref={ref}>
         {hasMounted && (
           <Swiper modules={[A11y]} slidesPerView={noOfItems} spaceBetween={10} loop>
-            {posts.map((singlePost, idx) => (
-              <SwiperSlide key={singlePost.meta.title}>
+            {posts.map((singlePost) => (
+              <SwiperSlide key={singlePost.title}>
                 <ArticleCard
-                  title={singlePost.meta.title}
-                  description={singlePost.meta.description}
-                  imageUrl={singlePost.meta.imageUrl}
-                  slug={singlePost.slug}
+                  title={singlePost.title}
+                  description={singlePost.description}
+                  imageUrl={singlePost.imageUrl}
+                  slug={singlePost._sys.filename}
                 />
               </SwiperSlide>
             ))}

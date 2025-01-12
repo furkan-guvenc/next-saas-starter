@@ -1,29 +1,7 @@
-import matter from 'gray-matter';
-import * as fs from 'fs';
-import * as path from 'path';
-import { SingleArticle } from 'types';
+import { Post } from '../content_types';
+import client from '../.tina/__generated__/client';
 
-export async function getAllPosts() {
-  return Promise.all(getAllPostsSlugs().map(getSinglePost));
-}
-
-export function getAllPostsSlugs() {
-  return fs.readdirSync(getPostsDirectory()).map(normalizePostName);
-}
-
-function normalizePostName(postName: string) {
-  return postName.replace('.mdx', '');
-}
-
-export async function getSinglePost(slug: string): Promise<SingleArticle> {
-  const filePath = path.join(getPostsDirectory(), slug + '.mdx');
-  const contents = fs.readFileSync(filePath, 'utf8');
-  const { data: meta, content } = matter(contents);
-
-  return { slug, content, meta: meta as SingleArticle['meta'] };
-}
-
-export function getPostsDirectory() {
-  let basePath = process.cwd();
-  return path.join(basePath, 'content/posts');
+export async function getAllPosts(): Promise<Post[]> {
+  const { data } = await client.queries.postsConnection()
+  return data.postsConnection.edges!.map(edge => edge!.node!)
 }

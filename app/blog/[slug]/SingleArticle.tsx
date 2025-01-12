@@ -12,17 +12,17 @@ import MDXRichText from 'components/MDXRichText';
 import React, { useEffect, useRef, useState } from 'react';
 import { getReadTime } from 'utils/readTime';
 import { NonNullableChildrenDeep } from 'types';
-import { Posts } from 'content_types';
+import { Post } from 'content_types';
 import { formatDate } from 'utils/formatDate';
 
 
 interface SingleArticleProps {
   slug: string;
-  posts: Posts;
+  posts: Post;
 }
 
 export default function SingleArticle({ slug, posts }: SingleArticleProps) {
-  const post = posts as NonNullableChildrenDeep<Posts>;
+  const post = posts as NonNullableChildrenDeep<Post>;
   const contentRef = useRef<HTMLDivElement | null>(null);
   const [readTime, setReadTime] = useState('');
 

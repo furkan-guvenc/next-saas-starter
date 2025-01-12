@@ -1,14 +1,10 @@
 'use client'
 import NextImage from 'next/image';
 import styled from 'styled-components';
+import { Feature } from 'content_types';
 
-interface BasicCardProps {
-  title: string;
-  description: string;
-  imageUrl: string;
-}
 
-export default function BasicCard({ title, description, imageUrl }: BasicCardProps) {
+export default function BasicCard({ title, description, imageUrl }: Feature) {
   return (
     (<Card>
       <NextImage

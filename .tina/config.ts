@@ -13,12 +13,14 @@ const footerCollection = {
         type: 'string',
         label: 'Wave CTA Title',
         name: 'waveCtaTitle',
+        required: true,
       },
       {
         type: 'object',
         label: 'Footer Items',
         name: 'footerItems',
         list: true,
+        required: true,
         fields: [
           {
             type: 'string',
@@ -32,6 +34,7 @@ const footerCollection = {
             label: 'Items',
             name: 'items',
             list: true,
+            required: true,
             fields: [
               {
                 type: 'string',
@@ -44,6 +47,7 @@ const footerCollection = {
                 type: 'string',
                 label: 'Link',
                 name: 'href',
+                required: true,
               },
             ]
           },
@@ -111,6 +115,7 @@ export default defineConfig({
             label: 'Description',
             name: 'description',
             isBody: true,
+            required: true,
           },
         ],
         ui: {
@@ -146,6 +151,7 @@ export default defineConfig({
             label: 'Description',
             name: 'description',
             isBody: true,
+            required: true,
           },
         ],
         ui: {
@@ -165,6 +171,7 @@ export default defineConfig({
             type: 'image',
             label: 'Logo URL',
             name: 'logoUrl',
+            required: true,
             ui: {
               validate: svgValidator
             }
@@ -229,10 +236,12 @@ export default defineConfig({
             label: 'Description',
             name: 'description',
             isBody: true,
+            required: true,
           },
           {
             type: 'image',
             label: 'Image URL',
+            required: true,
             name: 'imageUrl',
           },
           {
@@ -242,7 +251,8 @@ export default defineConfig({
             ui: {
               component: 'color',
               colorFormat: "rgb"
-            }
+            },
+            required: true,
           },
           {
             type: 'string',
@@ -251,7 +261,8 @@ export default defineConfig({
             ui: {
               component: 'color',
               colorFormat: "rgb"
-            }
+            },
+            required: true,
           },
         ]
       },
@@ -273,11 +284,13 @@ export default defineConfig({
             label: 'Description',
             name: 'description',
             isBody: true,
+            required: true,
           },
           {
             type: 'image',
             label: 'Image URL',
             name: 'imageUrl',
+            required: true,
           },
         ]
       },
@@ -291,6 +304,7 @@ export default defineConfig({
             type: 'object',
             label: 'author',
             name: 'author',
+            required: true,
             fields: [
               {
                 type: 'string',
@@ -303,11 +317,13 @@ export default defineConfig({
                 type: 'string',
                 label: 'Title',
                 name: 'title',
+                required: true,
               },
               {
                 type: 'image',
                 label: 'Avatar URL',
                 name: 'avatarUrl',
+                required: true,
               },
             ]
           },
@@ -316,11 +332,13 @@ export default defineConfig({
             label: 'Content',
             name: 'content',
             isBody: true,
+            required: true,
           },
           {
             type: 'image',
             label: 'Company Logo URL',
             name: 'companyLogoUrl',
+            required: true,
             ui: {
               validate: svgValidator
             }
@@ -344,6 +362,7 @@ export default defineConfig({
             type: 'string',
             label: 'Description',
             name: 'description',
+            required: true,
           },
           {
             type: 'string',
@@ -359,6 +378,7 @@ export default defineConfig({
             type: 'image',
             label: 'Image URL',
             name: 'imageUrl',
+            required: true,
           },
           {
             type: 'rich-text',
@@ -379,6 +399,7 @@ export default defineConfig({
                     type: 'string',
                     name: 'author',
                     label: 'Author',
+                    required: true,
                   },
                   {
                     type: 'string',

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import NextLink from 'next/link';
 import styled from 'styled-components';
 import Button from 'components/Button';
@@ -8,7 +8,11 @@ import SectionTitle from 'components/SectionTitle';
 import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
 import { media } from 'utils/media';
 
-export default function WaveCta() {
+interface WaveCtaProps {
+  title: string;
+}
+
+export default function WaveCta({ title }: WaveCtaProps) {
   const { setIsModalOpened } = useNewsletterModalContext();
 
   return (
@@ -22,7 +26,7 @@ export default function WaveCta() {
       </svg>
       <CtaWrapper>
         <Container>
-          <Title>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus delectus?</Title>
+          <Title>{title}</Title>
           <CustomButtonGroup>
             <Button onClick={() => setIsModalOpened(true)}>
               Subscribe to the newsletter <span>&rarr;</span>
@@ -40,25 +44,25 @@ export default function WaveCta() {
 }
 
 const CtaWrapper = styled.div`
-  background: rgb(var(--secondary));
-  margin-top: -1rem;
-  padding-bottom: 16rem;
+    background: rgb(var(--secondary));
+    margin-top: -1rem;
+    padding-bottom: 16rem;
 
-  ${media('<=tablet')} {
-    padding-top: 8rem;
-  }
+    ${media('<=tablet')} {
+        padding-top: 8rem;
+    }
 `;
 
 const Title = styled(SectionTitle)`
-  color: rgb(var(--textSecondary));
-  margin-bottom: 4rem;
+    color: rgb(var(--textSecondary));
+    margin-bottom: 4rem;
 `;
 
 const OutlinedButton = styled(Button)`
-  border: 1px solid rgb(var(--textSecondary));
-  color: rgb(var(--textSecondary));
+    border: 1px solid rgb(var(--textSecondary));
+    color: rgb(var(--textSecondary));
 `;
 
 const CustomButtonGroup = styled(ButtonGroup)`
-  justify-content: center;
+    justify-content: center;
 `;

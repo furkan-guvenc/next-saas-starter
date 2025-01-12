@@ -17,13 +17,13 @@ export default async function BlogIndexPage() {
       description="Culpa duis reprehenderit in ex amet cillum nulla do in enim commodo. Sunt ut excepteur et est aliqua anim ea excepteur fugiat voluptate. Fugiat exercitation dolore laboris do quis consectetur eiusmod tempor consequat."
     >
       <CustomAutofitGrid>
-        {posts.map((singlePost, idx) => (
+        {posts.map((singlePost) => (
           <ArticleCard
-            key={singlePost.slug}
-            title={singlePost.meta.title}
-            description={singlePost.meta.description}
-            imageUrl={singlePost.meta.imageUrl}
-            slug={singlePost.slug}
+            key={singlePost._sys.filename}
+            title={singlePost.title}
+            description={singlePost.description}
+            imageUrl={singlePost.imageUrl}
+            slug={singlePost._sys.filename}
           />
         ))}
       </CustomAutofitGrid>

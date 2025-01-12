@@ -10,6 +10,8 @@ import { NewsletterModalContextProvider, useNewsletterModalContext } from '../co
 import NewsletterModal from '../components/NewsletterModal';
 import { ColorModeScript } from 'nextjs-color-mode';
 import { GlobalStyle } from '../components/GlobalStyles';
+import { client } from '.tina/__generated__/client'
+import type { Footer as FooterType } from '../content_types';
 
 import 'swiper/css'
 
@@ -20,13 +22,14 @@ const navItems: NavItems = [
   { title: 'Sign up', href: '/sign-up', outlined: true },
 ];
 
-export default function RootLayout({
+export default async function RootLayout({
  // Layouts must accept a children prop.
  // This will be populated with nested layouts or pages
  children,
 }: {
   children: React.ReactNode
 }) {
+  const footer = await fetchFooter()
   return (
     <html lang="en">
     <Head>
@@ -52,8 +55,8 @@ export default function RootLayout({
           <Modals />
           <Navbar items={navItems} />
           {children}
-          <WaveCta />
-          <Footer />
+          <WaveCta title={footer.waveCtaTitle} />
+          <Footer footerItems={footer.footerItems} />
         </NavigationDrawer>
       </NewsletterModalContextProvider>
     </body>
@@ -67,4 +70,9 @@ function Modals() {
     return null;
   }
   return <NewsletterModal onClose={() => setIsModalOpened(false)} />;
+}
+
+async function fetchFooter(): Promise<FooterType> {
+  const { data } = await client.queries.footerConnection()
+  return data.footerConnection.edges!.map(edge => edge!.node!)[0]
 }
