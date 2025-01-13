@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn tinacms server:start -c \"next dev --turbo\"",
-    "build": "yarn tinacms server:start -c \"next build\"",
-    "start": "yarn tinacms server:start -c \"next start\"",
+    "dev": "tinacms dev -c \"next dev --turbo\"",
+    "build_local": "yarn tinacms server:start -c \"next build\"",
+    "start_local": "yarn tinacms server:start -c \"next start\"",
+    "build": "tinacms build && next build",
+    "start": "tinacms build && next start",
     "lint": "next lint"
   },
   "dependencies": {
