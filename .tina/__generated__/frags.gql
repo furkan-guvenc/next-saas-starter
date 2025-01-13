@@ -1,3 +1,73 @@
+fragment FooterParts on Footer {
+  __typename
+  waveCtaTitle
+  footerItems {
+    __typename
+    title
+    items {
+      __typename
+      title
+      href
+    }
+  }
+}
+
+fragment HeroParts on Hero {
+  __typename
+  overTitle
+  title
+  description
+}
+
+fragment CtaParts on Cta {
+  __typename
+  overTitle
+  title
+  description
+}
+
+fragment PartnersParts on Partners {
+  __typename
+  logoUrl
+}
+
+fragment SectionParts on Section {
+  __typename
+  overTitle
+  title
+  content
+  imageUrl
+  reversed
+}
+
+fragment FeaturesGalleryParts on FeaturesGallery {
+  __typename
+  title
+  description
+  imageUrl
+  baseColor
+  secondColor
+}
+
+fragment FeaturesParts on Features {
+  __typename
+  title
+  description
+  imageUrl
+}
+
+fragment TestimonialsParts on Testimonials {
+  __typename
+  author {
+    __typename
+    name
+    title
+    avatarUrl
+  }
+  content
+  companyLogoUrl
+}
+
 fragment PostsParts on Posts {
   __typename
   title
